@@ -8,8 +8,9 @@ export default class App extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      text: '',
-      isLoggedIn: false
+      text: "",
+      isLoggedIn: false,
+      login:""
     }
     this.handleInputChange = this.handleInputChange.bind(this);
     
@@ -17,17 +18,22 @@ export default class App extends Component {
   handleInputChange (event) {
     this.setState({ text: event.target.value })
   }
+  handleLoginInput = (event) => {
+    this.setState({login: event.target.value})
+  }
   // experimental syntax
   login = () => {
+    console.log("User logged in")
     this.setState({isLoggedIn:true})
   }
   // no manual binding required
   logout = () => {
+    
     this.setState({isLoggedIn:false})
   }
 
   gallery(){
-    <div className='container'>
+   return( <div className='container'>
     <div className='row'>
       <Search
         value={this.state.text}
@@ -38,9 +44,9 @@ export default class App extends Component {
       <ImageSection name={this.state.text} />
     </div>
   </div>
-  }
+  )}
 
   render () {
-   return <Login handleLogin={this.login}></Login>
+   return <Login login={this.state.login} onConfirm={this.login} handleChange={this.handleLoginInput}></Login>
   }
 }
