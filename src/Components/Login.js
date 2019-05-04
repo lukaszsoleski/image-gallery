@@ -6,7 +6,9 @@ export default class Login extends Component {
   render() {
 
     return (
-      <div>
+      <div className='container'>
+      <div className='col justify-content-center'>
+
         <form noValidate autoComplete="off" className='form-group'>
           <TextField
             id="standard-name"
@@ -27,6 +29,7 @@ export default class Login extends Component {
           />
         </form>
         <Button variant="outlined" className='mt-2' onClick={this.props.onConfirm}>Login</Button>
+      </div>
       </div>
     )
   }

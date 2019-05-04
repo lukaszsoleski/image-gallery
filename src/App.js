@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { Search } from './Components/Search'
 import ImageSection from "./Components/ImageSection"
-import Login from './Components/Login';
-
+import Login from './Components/Login'
+import Menu from './Components/Menu'
 
 export default class App extends Component {
   constructor (props) {
@@ -22,15 +22,11 @@ export default class App extends Component {
     this.setState({login: event.target.value})
   }
   // experimental syntax
-  login = () => {
-    console.log("User logged in")
-    this.setState({isLoggedIn:true})
+  toggleLoginState = () => {
+    this.setState(currState => ({isLoggedIn:!currState.isLoggedIn}))
   }
   // no manual binding required
-  logout = () => {
-    
-    this.setState({isLoggedIn:false})
-  }
+
 
   gallery(){
    return( <div className='container'>
@@ -46,7 +42,17 @@ export default class App extends Component {
   </div>
   )}
 
+//  {this.state.isLoggedIn ? 
+// this.gallery() 
+// : 
+//   <Login login={this.state.login} onConfirm={this.toggleLoginState} handleChange={this.handleLoginInput}/>
+// }
+
   render () {
-   return <Login login={this.state.login} onConfirm={this.login} handleChange={this.handleLoginInput}></Login>
+   return (
+    <>
+      <Menu username={this.state.login} isLoggedIn={this.state.isLoggedIn} onLoginStateClick={this.toggleLoginState} />
+    </>
+    )
   }
 }
