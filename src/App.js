@@ -5,54 +5,54 @@ import Login from './Components/Login'
 import Menu from './Components/Menu'
 
 export default class App extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = {
       text: "",
       isLoggedIn: false,
-      login:""
+      login: ""
     }
     this.handleInputChange = this.handleInputChange.bind(this);
-    
+
   }
-  handleInputChange (event) {
+  handleInputChange(event) {
     this.setState({ text: event.target.value })
   }
   handleLoginInput = (event) => {
-    this.setState({login: event.target.value})
+    this.setState({ login: event.target.value })
   }
   // experimental syntax
   toggleLoginState = () => {
-    this.setState(currState => ({isLoggedIn:!currState.isLoggedIn}))
+    this.setState(currState => ({ isLoggedIn: !currState.isLoggedIn }))
   }
   // no manual binding required
 
 
-  gallery(){
-   return( <div className='container'>
-    <div className='row'>
-      <Search
-        value={this.state.text}
-        handleChange={this.handleInputChange}
-      />
+  gallery() {
+    return (<div className='container'>
+      <div className='row'>
+        <Search
+          value={this.state.text}
+          handleChange={this.handleInputChange}
+        />
+      </div>
+      <div className='row justify-content-around'>
+        <ImageSection name={this.state.text} />
+      </div>
     </div>
-    <div className='row justify-content-around'>
-      <ImageSection name={this.state.text} />
-    </div>
-  </div>
-  )}
+    )
+  }
 
-//  {this.state.isLoggedIn ? 
-// this.gallery() 
-// : 
-//   <Login login={this.state.login} onConfirm={this.toggleLoginState} handleChange={this.handleLoginInput}/>
-// }
-
-  render () {
-   return (
-    <>
-      <Menu username={this.state.login} isLoggedIn={this.state.isLoggedIn} onLoginStateClick={this.toggleLoginState} />
-    </>
+  render() {
+    console.log("Username: " + this.state.login)
+    console.log("Is logged in: " + this.state.isLoggedIn)
+    return (
+      <>
+        <Menu username={this.state.login} isLoggedIn={this.state.isLoggedIn} onLoginStateClick={this.toggleLoginState} />
+        {this.state.isLoggedIn ? this.gallery() :
+          <Login login={this.state.login} onConfirm={this.toggleLoginState} handleChange={this.handleLoginInput} />
+        }
+      </>
     )
   }
 }

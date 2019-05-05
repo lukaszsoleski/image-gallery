@@ -7,29 +7,29 @@ export default class Login extends Component {
 
     return (
       <div className='container'>
-      <div className='col justify-content-center'>
+        <div className='col justify-content-center'>
 
-        <form noValidate autoComplete="off" className='form-group'>
-          <TextField
-            id="standard-name"
-            label="Username"
-            className='mb-2 form-control'
-            value={this.props.login}
-            onChange={this.props.handleChange}
-            margin="normal"
-          />
+          <form noValidate autoComplete="off" className='form-group'>
+            <TextField
+              id="standard-name"
+              label="Username"
+              className='mb-2 form-control'
+              value={this.props.login}
+              onChange={this.props.handleChange}
+              margin="normal"
+            />
 
-          <TextField
-            id="standard-password-input"
-            label="Password"
-            className='mb-2 form-control'
-            type="password"
-            autoComplete="current-password"
-            margin="normal"
-          />
-        </form>
-        <Button variant="outlined" className='mt-2' onClick={this.props.onConfirm}>Login</Button>
-      </div>
+            <TextField
+              id="standard-password-input"
+              label="Password"
+              className='mb-2 form-control'
+              type="password"
+              autoComplete="current-password"
+              margin="normal"
+            />
+          </form>
+          <Button variant="outlined" className='mt-2' onClick={this.props.onConfirm}>Login</Button>
+        </div>
       </div>
     )
   }

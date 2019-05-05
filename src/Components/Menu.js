@@ -34,10 +34,10 @@ export class Menu extends Component {
             <Typography 
             variant="h6" 
             className={classes.grow} 
-            color="inherit">{this.props.username ? "Hello, " + this.props.username : ""}</Typography>
+            color="inherit">{this.props.isLoggedIn ? "Hello, " + this.props.username : ""}</Typography>
           }
         
-          <Button color="inherit" onClick={this.props.onLoginStateClick}>{this.props.isloggedIn ? "Login" : "Logout"}</Button>
+          {this.props.isLoggedIn && <Button color="inherit" onClick={this.props.onLoginStateClick}>Logout</Button>}
         </Toolbar>
       </AppBar>
     </div>
