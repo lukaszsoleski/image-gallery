@@ -44,13 +44,17 @@ export default class App extends Component {
   }
 
   render() {
-    console.log("Username: " + this.state.login)
-    console.log("Is logged in: " + this.state.isLoggedIn)
+
     return (
       <>
-        <Menu username={this.state.login} isLoggedIn={this.state.isLoggedIn} onLoginStateClick={this.toggleLoginState} />
-        {this.state.isLoggedIn ? this.gallery() :
-          <Login login={this.state.login} onConfirm={this.toggleLoginState} handleChange={this.handleLoginInput} />
+        <Menu username={this.state.login} 
+        isLoggedIn={this.state.isLoggedIn} 
+        onLoginStateClick={this.toggleLoginState} />
+        {
+          this.state.isLoggedIn ? this.gallery() :
+          <Login login={this.state.login} 
+          onConfirm={this.toggleLoginState} 
+          handleChange={this.handleLoginInput} />
         }
       </>
     )
